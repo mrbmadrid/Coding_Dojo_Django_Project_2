@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amadon</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.main {
+			margin: 5%;
+		}
+
+		.title {
+			background-color: gray;
+		}
+
+		.shopping_portal row:nth-of-type[even] {
+			background-color: lightgray;
+		}
+	</style>
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous">
+  	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".product").on('change', function(){
+				$(".subtotal", this).html(Number($(".price", this).html().replace(/[^0-9\.-]+/g,"")) * Number($("input", this).val()))
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="container-fluid main">
+		<div class="row">
+			<div class='col-sm-12'>
+				<h1>Amadon Store!</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 shopping_portal">
+				<div class="row title">
+					<div class="col-sm-5">Item</div>
+					<div class="col-sm-2">Quantity</div>
+					<div class="col-sm-2">Price</div>
+					<div class="col-sm-2">Subtotal</div>
+				</div>
+				<form action="/amadon/purchase" method='post'>{% csrf_token %}
+				{%for item in request.session.products%}
+					<div class="row product">
+						<div class="col-sm-5">{{item.0}}</div>
+						<div class="col-sm-2">
+							<input type="number" name="{{item.0}}" value="0" min="0" max="10" required></input>
+						</div>
+						<div class="col-sm-2 price">${{item.1}}</div>
+						<div class="col-sm-2 subtotal"></div>
+					</div>
+				{%endfor%}
+				<div class='row'>
+					<div class='col-sm-8'></div>
+					<div class='col-sm-2'>
+						<input type="submit" name="buy" value="Buy Now">
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
