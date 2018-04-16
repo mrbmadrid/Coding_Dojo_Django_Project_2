@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forms with Django</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<style type="text/css">
+		textarea {
+			display: block;
+			width: 100%;
+		}
+
+		.border {
+			border: 2px solid black;
+			padding: 10px;
+			margin-top: 20px;
+		}
+		.row{
+			margin-t
+		}
+	</style>
+</head>
+<body>
+	<div class='container-fluid'>
+		<div class='row'>
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4 border">
+				<form action="/submit" method='POST'>{% csrf_token %}
+					<div>
+						<label for='name'>Your Name:</label>
+						<input type="text" name="name">
+					</div>
+					<div>
+						<label for='location'>Dojo Location:</label>
+						<select name="location">
+							<option value="Mountain View">Mountain View</option>
+						</select>
+					</div>
+					<div>
+						<label for="favorite">Favorite Language:</label>
+						<select name="favorite">
+							<option value="Javascript">Javascript</option>
+						</select>
+					</div>
+					<div>
+						<label for='comment'>Comment (optional):</label>
+						<textarea name='comment'></textarea>
+					</div>
+					<hr>
+					<input type="submit" name="submit">
+					</form>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</div>
+
+</body>
+</html>
