@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Session Words</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.left {
+			border-right: 2px solid black;
+			line-height: 30px;
+		}
+
+		.red {
+			color: red;
+		}
+
+		.blue {
+			color: blue;
+		}
+
+		.green {
+			color: green;
+		}
+
+		.big {
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<div class='container-fluid'>
+		<dir class='row'>
+			<div class='col-sm-6 col-xs-12 left'>
+				<h1>Add a new word</h1>
+				<form action='/session_words/submit' method='post'>{% csrf_token %}
+					<input type="text" name="word"><br>
+					<label for='color'>Choose color</label><br>
+					<input type="radio" name="color" value="red">Red <br>
+					<input type="radio" name="color" value="green">Green <br>
+					<input type="radio" name="color" value="blue">Blue <br>
+					<input type="checkbox" name="big" value='big'>show in BIG fonts!<br>
+					<input type="submit" name="submit" value='Add to Session'>
+				</form>
+			</div>
+			<div class='col-sm-6 col-xs-12'>
+				<form action="/session_words/clear" method='post'>{% csrf_token %}
+					<input type="submit" name="clear" value="Clear Session">
+				</form>
+				{%for word in request.session.words%}
+					<p class='{{word.classes}}'>{{word.word}}</p>
+				{%endfor%}
+			</div>
+		</dir>
+	</div>
+</body>
+</html>
