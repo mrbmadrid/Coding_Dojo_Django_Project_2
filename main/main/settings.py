@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'apps.form_app',
     'apps.session_words',
     'apps.amadon',
+    'apps.ninja_gold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

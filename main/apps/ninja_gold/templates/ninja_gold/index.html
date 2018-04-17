@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Gold</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/ninja_gold/styles.css' %}">
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+	<script src="{% static 'js/ninja_gold.js' %}"></script>
+</head>
+<body>
+	<div class='container-flued'>
+		<div class='row'>
+			<a href="/ninja_gold"><div class='col banner'>
+				<img src="{% static 'img/ninja_gold.png'%}">
+			</div></a>
+		</div>
+		<hr>
+		<div class='row'>
+			<div class='col-md-1'></div>
+			<div class='col-xs-12 col-md-11'>
+				<div id="gold">
+					Current Ninja Gold: {{request.session.gold}}
+				</div>
+			</div>
+		</div>
+		<div class ="row">
+			<div class="col-xs-12 col-sm-6 col-md-3"><div class='action'><span class='action-internal'><h3>Farm</h3>(Earns 10-20 golds)<br><br><span class='button'>Go Here!</span></span></div></div>
+			<div class="col-xs-12 col-sm-6 col-md-3"><div class='action'><span class='action-internal'><h3>Cave</h3>(Earns 5-10 golds)<br><br><span class='button'>Go Here!</span></span></div></div>
+			<div class="col-xs-12 col-sm-6 col-md-3"><div class='action'><span class='action-internal'><h3>House</h3>(Earns 2-5 golds)<br><br><span class='button'>Go Here!</span></span></div></div>
+			<div class="col-xs-12 col-sm-6 col-md-3"><div class='action'><span class='action-internal'><h3>Casino</h3>(Wins/Loses 0-50 golds)<br><br><span class='button'>Go Here!</span></span></div></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-1 title">
+				History:
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-sm-12'>
+				<div id='history'><div id="history-internal">Ninja has 0 gold! Go work!</div></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
